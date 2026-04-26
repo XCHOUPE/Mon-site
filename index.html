@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Afribridge Logistics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #0b0f19;
+  color: white;
+}
+
+/* NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: fixed;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  color: #ff7a00;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.lang {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right, #0b0f19, #0a2540);
+}
+
+.hero h1 {
+  font-size: 55px;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero p {
+  margin-top: 15px;
+  opacity: 0.7;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: #ff7a00;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  margin: 15px;
+  padding: 20px;
+  background: #121826;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* TRACKING */
+.tracking input {
+  padding: 10px;
+  width: 250px;
+}
+
+.tracking button {
+  padding: 10px;
+  background: #ff7a00;
+  border: none;
+}
+
+/* CONTACT */
+input, textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.6;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1 {font-size: 35px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Afribridge Logistics</div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#tracking">Tracking</a>
+    <a href="#contact">Contact</a>
+    <span class="lang" onclick="setLang('fr')">FR</span>
+    <span class="lang" onclick="setLang('en')">EN</span>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1 id="title">Connecter l’Afrique,livrer l'excellence</h1>
+    <p id="subtitle">Transport & logistique premium</p>
+    <button class="btn">Coming Soon</button>
+	
+	<!-- En cours de dévelopement -->
+	
+	  <h1 id="title">Restez connecté(e)s !</h1>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <h2>Services</h2>
+  <div class="cards">
+    <div class="card">📝 Dédouanement</div>
+    <div class="card">🚚 Routier</div>
+    <div class="card">📦 Logistique</div>
+    <div class="card">🚢 Transit</div>
+  </div>
+</section>
+
+<!-- TRACKING -->
+<section class="section tracking" id="tracking">
+  <h2>Suivi de conteneur</h2>
+  <input type="text" id="trackingInput" placeholder="Numéro de suivi">
+  <button onclick="track()">Suivre</button>
+  <p id="trackingResult"></p>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <h2>Nous contacter</h2>
+  <form onsubmit="sendEmail(event)">
+    <input type="text" placeholder="Nom" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message"></textarea>
+    <button class="btn">Envoyer</button>
+  </form>
+  
+</section>
+ 
+<footer>
+  <p>contact@afribridges.com | Tel: +237 693 00 70 54 | Kribi - Cameroun</p>
+  
+  <p> © 2026 Afribridge Logistics SARL </p>
+  
+</footer>
+
+<script>
+// MULTILINGUE
+function setLang(lang){
+  if(lang === "en"){
+    document.getElementById("title").innerText = "Connecting Africa";
+    document.getElementById("subtitle").innerText = "Premium transport & logistics";
+  } else {
+    document.getElementById("title").innerText = "Connecter l’Afrique";
+    document.getElementById("subtitle").innerText = "Transport & logistique premium";
+  }
+}
+
+// TRACKING SIMULATION
+function track(){
+  let code = document.getElementById("trackingInput").value;
+  let result = document.getElementById("trackingResult");
+
+  if(code === ""){
+    result.innerText = "Entrez un numéro";
+  } else {
+    result.innerText = "Colis en cours de livraison 🚚";
+  }
+}
+
+// EMAIL (EmailJS)
+function sendEmail(e){
+  e.preventDefault();
+  alert("Message envoyé (connecte EmailJS)");
+}
+</script>
+
+</body>
+</html>
